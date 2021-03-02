@@ -10,7 +10,13 @@ import com.example.weatherapp.City
 import com.example.weatherapp.CityRepository
 import com.example.weatherapp.R
 
-class ListAdapter(private val cityRepository : CityRepository,private val onClick: (City) -> Unit) : RecyclerView.Adapter<ListAdapter.CityHolder>() {
+class ListAdapter(private val onClick: (City) -> Unit) : RecyclerView.Adapter<ListAdapter.CityHolder>() {
+
+    var cities: List<City> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     class CityHolder(itemView: View, private val onClick: (City) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
@@ -18,8 +24,6 @@ class ListAdapter(private val cityRepository : CityRepository,private val onClic
         val weatherText: TextView = itemView.findViewById(R.id.weatherText)
         val weatherImage: ImageView = itemView.findViewById(R.id.weatherImage)
     }
-
-    private val cities = cityRepository.getCities()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_city, parent, false)
