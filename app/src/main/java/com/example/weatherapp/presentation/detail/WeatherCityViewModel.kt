@@ -1,14 +1,15 @@
-package com.example.weatherapp.detail
+package com.example.weatherapp.presentation.detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.weatherapp.City
-import com.example.weatherapp.CityRepository
-import com.example.weatherapp.LiveEvent
+import com.example.weatherapp.domain.City
+import com.example.weatherapp.domain.CityRepository
+import com.example.weatherapp.domain.GetCityUseCase
+import com.example.weatherapp.presentation.LiveEvent
 
 class WeatherCityViewModel(
-        private val repository: CityRepository,
-        id: Long
+    getCityUseCase: GetCityUseCase,
+    id: Long
 ) : ViewModel() {
 
     val city = MutableLiveData<City>()
@@ -16,7 +17,7 @@ class WeatherCityViewModel(
     val closeScreenEvent = LiveEvent()
 
     init {
-        val city = repository.getCity(id)
+        val city = getCityUseCase(id)
 
         if(city != null){
             this.city.value = city

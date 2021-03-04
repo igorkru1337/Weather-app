@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.domain
 
 data class City(
         val id: Long,

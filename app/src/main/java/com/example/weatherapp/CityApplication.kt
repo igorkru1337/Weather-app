@@ -1,6 +1,7 @@
 package com.example.weatherapp
 
 import android.app.Application
+import com.example.weatherapp.domain.CityRepository
 
 class CityApplication : Application(){
 
@@ -8,7 +9,5 @@ class CityApplication : Application(){
 
     override fun onCreate() {
         super.onCreate()
-        cityRepository = CityRepository()
-        cityRepository.createList()
     }
 }

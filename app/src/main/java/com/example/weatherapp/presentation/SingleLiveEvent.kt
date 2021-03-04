@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.presentation
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

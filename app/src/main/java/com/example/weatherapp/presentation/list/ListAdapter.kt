@@ -1,4 +1,4 @@
-package com.example.weatherapp.list
+package com.example.weatherapp.presentation.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weatherapp.City
-import com.example.weatherapp.CityRepository
+import com.example.weatherapp.domain.City
 import com.example.weatherapp.R
 
 class ListAdapter(private val onClick: (City) -> Unit) : RecyclerView.Adapter<ListAdapter.CityHolder>() {

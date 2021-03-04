@@ -1,4 +1,4 @@
-package com.example.weatherapp.list
+package com.example.weatherapp.presentation.list
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -6,21 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weatherapp.City
+import com.example.weatherapp.domain.City
 import com.example.weatherapp.CityApplication
-import com.example.weatherapp.CityRepository
+import com.example.weatherapp.domain.CityRepository
 import com.example.weatherapp.R
-import com.example.weatherapp.detail.WeatherCityActivity
+import com.example.weatherapp.presentation.detail.WeatherCityActivity
 
 class ListCityActivity : AppCompatActivity() {
 
     private val viewModel: ListViewModel by viewModels {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-                    modelClass
-                            .getConstructor(CityRepository::class.java)
-                            .newInstance((application as CityApplication).cityRepository)
-        }
+        ListViewModelFactory()
     }
 
     private lateinit var recyclerView: RecyclerView

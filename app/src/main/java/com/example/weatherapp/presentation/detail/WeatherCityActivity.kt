@@ -1,4 +1,4 @@
-package com.example.weatherapp.detail
+package com.example.weatherapp.presentation.detail
 
 import android.content.Context
 import android.content.Intent
@@ -6,12 +6,8 @@ import android.os.Bundle
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.example.weatherapp.City
-import com.example.weatherapp.CityApplication
-import com.example.weatherapp.CityRepository
 import com.example.weatherapp.R
+import com.example.weatherapp.domain.City
 
 class WeatherCityActivity : AppCompatActivity() {
 
@@ -27,15 +23,8 @@ class WeatherCityActivity : AppCompatActivity() {
     }
 
     private val viewModel: WeatherCityViewModel by viewModels {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-                modelClass
-                    .getConstructor(CityRepository::class.java, Long::class.java)
-                    .newInstance(
-                        (application as CityApplication).cityRepository,
-                        intent.getLongExtra(EXTRA_ID, 0)
-                    )
-        }
+        val id = intent.getLongExtra(EXTRA_ID, 0)
+        WeatherCityViewModelFactory(id)
     }
 
     private lateinit var weatherImage: ImageView
@@ -98,7 +87,7 @@ class WeatherCityActivity : AppCompatActivity() {
         backButton = findViewById(R.id.backButton)
     }
 
-    private fun closeScreen(){
+    private fun closeScreen() {
         finish()
     }
 }

@@ -1,4 +1,6 @@
-package com.example.weatherapp
+package com.example.weatherapp.presentation
+
+import com.example.weatherapp.presentation.SingleLiveEvent
 
 class LiveEvent : SingleLiveEvent<Unit>(){
 
