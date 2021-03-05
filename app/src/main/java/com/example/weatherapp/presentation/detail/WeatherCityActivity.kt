@@ -4,10 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.weatherapp.R
 import com.example.weatherapp.domain.City
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class WeatherCityActivity : AppCompatActivity() {
 
@@ -22,9 +23,8 @@ class WeatherCityActivity : AppCompatActivity() {
         }
     }
 
-    private val viewModel: WeatherCityViewModel by viewModels {
-        val id = intent.getLongExtra(EXTRA_ID, 0)
-        WeatherCityViewModelFactory(id)
+    private val viewModel: WeatherCityViewModel by viewModel {
+        parametersOf(intent.getLongExtra(EXTRA_ID, 0))
     }
 
     private lateinit var weatherImage: ImageView

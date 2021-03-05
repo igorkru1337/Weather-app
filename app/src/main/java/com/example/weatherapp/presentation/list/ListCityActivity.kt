@@ -1,22 +1,16 @@
 package com.example.weatherapp.presentation.list
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.domain.City
-import com.example.weatherapp.CityApplication
-import com.example.weatherapp.domain.CityRepository
 import com.example.weatherapp.R
 import com.example.weatherapp.presentation.detail.WeatherCityActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListCityActivity : AppCompatActivity() {
 
-    private val viewModel: ListViewModel by viewModels {
-        ListViewModelFactory()
-    }
+    private val viewModel: ListViewModel by viewModel()
 
     private lateinit var recyclerView: RecyclerView
 

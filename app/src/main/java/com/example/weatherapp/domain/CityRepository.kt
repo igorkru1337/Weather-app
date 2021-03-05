@@ -1,6 +1,6 @@
 package com.example.weatherapp.domain
 
-interface CityRepository {
+interface  CityRepository {
 
     fun getCity(id: Long): City?
 
